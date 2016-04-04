@@ -16,7 +16,7 @@ commands = {
     'start': 'Starts the bot!',
     'help': 'Show commands abailables',
     'todec': 'Takes an hexadecimal or binary number and returns his decimal equivalent',
-    'tohex': 'Takes an decimal number and returns his hexadecimal equivalent',
+    'tohex': 'Takes a decimal number and returns his hexadecimal equivalent',
     'tobin': 'Takes a decimal number and returns his binary equivalent'
 }
 
