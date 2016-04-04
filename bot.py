@@ -16,7 +16,8 @@ commands = {
     'start': 'Starts the bot!',
     'help': 'Show commands abailables',
     'todec': 'Takes a decimal number and returns his hexadecimal equivalent',
-    'tohex': 'Takes a hexadecimal number and returns his decimal equivalent'
+    'tohex': 'Takes a hexadecimal number and returns his decimal equivalent',
+    'tobin': 'Takes a binary number and returns his decimal equivalent'
 }
 
 # Handlers
@@ -40,7 +41,7 @@ def help(m):
 def tohex(m):
     if len(m.text.split(' ')) == 1:
         bot.send_message(m.chat.id,
-                         "Try:\n/tohex [number]\n\nExample:\n/tohex 10")
+                         "Try:\n /tohex [number]\n\nExample:\n /tohex 10")
     else:
         try:
             if '.' in m.text.split()[1]:
@@ -57,14 +58,41 @@ def tohex(m):
 def todec(m):
     if len(m.text.split(' ')) == 1:
         bot.send_message(m.chat.id,
-                         "Try:\n/todec [number]\n\nExample:\n/todec 0xa")
+                         "Try:\n /todec [number]\n\nExample:\n /todec 0xa")
     else:
-        hexNumber = m.text.split()[1]
+        number = m.text.split()[1]
+        if number.startswith('0x'):
+            try:
+                num = int(number, 16)
+                bot.reply_to(m, str(num))
+            except ValueError:
+                bot.reply_to(m, "Ups!\nThat's not a hexadecimal number.")
+        elif number.startswith('0b'):
+            try:
+                num = int(number, 2)
+                bot.reply_to(m, str(num))
+            except ValueError:
+                bot.reply_to(m, "Ups!\nThat's not a binary number.")
+        else:
+            bot.reply_to(m,
+                         "Ups\nThat's neither a binary or hexadecimal number")
+
+
+@bot.message_handler(commands=['tobin'])
+def tobin(m):
+    if len(m.text.split(' ')) == 1:
+        bot.send_message(m.chat.id,
+                         "Try:\n /tobin [number]\n\nExample:\n /tobin 10")
+    else:
         try:
-            number = int(hexNumber, 16)
-            bot.reply_to(m, str(number))
+            if '.' in m.text.split()[1]:
+                bot.reply_to(m, "Ups!\nThat's not a decimal number.")
+            else:
+                number = int(m.text.split()[1])
+                binNumber = bin(number)
+                bot.reply_to(m, binNumber)
         except ValueError:
-            bot.reply_to(m, "Ups!\nThat's not a hexadecimal number.")
+            bot.reply_to(m, "Ups!\nThat's not a decimal number.")
 
 # Ignore older messages
 bot.skip_pending = True
