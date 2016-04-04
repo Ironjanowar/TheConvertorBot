@@ -28,5 +28,5 @@ This is a bot programmed on Python thanks to this [[https://github.com/eternnoir
     - /start :: Starts the bot!
     - /help  :: Show commands abailables
     - /todec :: Takes a decimal number and returns his hexadecimal equivalent
-    - /tohex :: Takes a hexadecimal number and returns his decimal equivalent
+    - /tohex :: Takes an hexadecimal number and returns his decimal equivalent
     - /tobin :: Takes a binary number and returns his decimal equivalent
