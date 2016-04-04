@@ -12,12 +12,12 @@ This is a bot programmed on Python thanks to this [[https://github.com/eternnoir
    $ cd TheConvertorBot
 #+END_SRC
 
-- Create a file named *convertor.token* with your token in it.
+- Create a file named *convertor.token* with your token on it.
 #+BEGIN_SRC bash
   $ echo "TOKEN" > convertor.token
 #+END_SRC
 
-*NOTA:* Get your own /token/ [[https://core.telegram.org/bots][here]].
+*NOTE:* Get your own /token/ [[https://core.telegram.org/bots][here]].
 
 - Run the bot
 #+BEGIN_SRC bash
@@ -26,7 +26,7 @@ This is a bot programmed on Python thanks to this [[https://github.com/eternnoir
 
 * Commands
     - /start :: Starts the bot!
-    - /help :: Show commands abailables
+    - /help  :: Show commands abailables
     - /todec :: Takes a decimal number and returns his hexadecimal equivalent
     - /tohex :: Takes a hexadecimal number and returns his decimal equivalent
     - /tobin :: Takes a binary number and returns his decimal equivalent
