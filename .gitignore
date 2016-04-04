@@ -1,0 +1,10 @@
+# TOKEN #
+*.token
+
+# Emacs stuff #
+\#*\#
+*~
+.#*# Emacs stuff #
+\#*\#
+*~
+.#*
