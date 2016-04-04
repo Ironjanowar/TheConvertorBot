@@ -4,7 +4,7 @@ import sys
 
 # Check if there is any token file
 if not path.isfile('./convertor.token'):
-    print("ERROR: Can't find token as\"convertor.token\"\nCreate the file with a Telegram bot token.")
+    print("ERROR: Can't find token as \"convertor.token\"\nCreate the file with a Telegram bot token.")
     sys.exit()
 
 # Create bot with its token
