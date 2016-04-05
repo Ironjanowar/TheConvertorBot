@@ -30,7 +30,7 @@ def listener(messages):
             # Prints the sent message to the console
             if m.chat.type == 'private':
                 print("Chat -> " + str(m.chat.first_name) +
-                      " [" + str(m.chat.id) + "]: " + m.text)
+                      "(@" + m.from_user.username + ")" + " [" + str(m.chat.id) + "]: " + m.text)
         else:
             print("Group -> " + str(m.chat.title) +
                   " [" + str(m.chat.id) + "]: " + m.text)
