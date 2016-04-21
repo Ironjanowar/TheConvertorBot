@@ -54,7 +54,7 @@ def query_fromDec(inline_query):
         print(e)
 
 
-@bot.inline_handler(lambda query: query.query.startswith('0x') and len(query.query.split('x')) == 2)
+@bot.inline_handler(lambda query: query.query.startswith('0x') and query.query.split('x')[1] != '')
 def query_fromHex(iq):
     number = iq.query
     decNum = int(number, 16)
@@ -63,7 +63,7 @@ def query_fromHex(iq):
     bot.answer_inline_query(iq.id, [r])
 
 
-@bot.inline_handler(lambda query: query.query.startswith('0b') and len(query.query.split('b')) == 2)
+@bot.inline_handler(lambda query: query.query.startswith('0b') and query.query.split('b')[1] != '')
 def query_fromBin(iq):
     number = iq.query
     decNum = int(number, 2)
