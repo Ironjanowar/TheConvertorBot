@@ -35,6 +35,7 @@ def toHex(num):
     else:
         return None
 
+
 # Inline handler
 
 

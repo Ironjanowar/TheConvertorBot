@@ -1,6 +1,6 @@
 #!/bin/bash
 
-while 1; do
+while true; do
     python inline_bot.py
     sleep 1
 done
