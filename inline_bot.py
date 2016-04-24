@@ -35,8 +35,21 @@ def toHex(num):
     else:
         return None
 
+# Handlers
 
-# Inline handler
+
+@bot.messages_handler(commands=['help'])
+def help(m):
+    help_message = "Type in any chat:\n\n@theConvertor_bot [number]\n\nIt will show to wich base you want to change the \"number\""
+    bot.reply_to(m, help_message)
+
+
+@bot.messages_handler(commands=['start'])
+def start(m):
+    help_message = "Hi! This is the inline  version of @theConvertor_bot\nSource code here:\n\nhttps://github.com/Ironjanowar/TheConvertorBot"
+    bot.reply_to(m, help_message)
+
+# Inline handlers
 
 
 @bot.inline_handler(lambda query: isNumber(query.query))
