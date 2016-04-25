@@ -2,6 +2,7 @@ import telebot
 import os.path as path
 from telebot import types
 import sys
+import json
 
 # Check if there is any token file
 if not path.isfile('./convertor.token'):
@@ -13,7 +14,18 @@ with open('./convertor.token', 'r') as TOKEN:
     bot = telebot.TeleBot(TOKEN.readline().strip())
 
 
+if not path.isfile('./data/admin.json'):
+    with open('./data/admins.json', 'w') as adminData:
+        adminData.write('{}')
+        adminData.close
+
+with open('./data/admins.json', 'r') as adminData:
+    global admins
+    admins = json.load(adminData)
+
 # Functions
+
+
 def toBin(num):
     if type(num) == int:
         return bin(num)
@@ -35,6 +47,14 @@ def toHex(num):
     else:
         return None
 
+
+def isAdmin_fromPrivate(message):
+    if message.chat.type == 'private':
+        userID = message.from_user.id
+        if str(userID) in admins:
+            return True
+    return False
+
 # Handlers
 
 
@@ -42,6 +62,15 @@ def toHex(num):
 def help(m):
     help_message = "Type in any chat:\n\n@theConvertor_bot [number]\n\nIt will show to wich base you want to change the \"number\""
     bot.reply_to(m, help_message)
+
+
+@bot.messages_handler(commands=['update'])
+def update(m):
+    if isAdmin_fromPrivate(m):
+        bot.reply_to(m, "Updating..\n\nTry /help in a few seconds.")
+        sys.exit()
+    else:
+        bot.reply_to(m, "Sorry.. You're not an admin :/")
 
 
 @bot.messages_handler(commands=['start'])
