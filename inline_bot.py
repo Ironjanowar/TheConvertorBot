@@ -58,13 +58,13 @@ def isAdmin_fromPrivate(message):
 # Handlers
 
 
-@bot.messages_handler(commands=['help'])
+@bot.message_handler(commands=['help'])
 def help(m):
     help_message = "Type in any chat:\n\n@theConvertor_bot [number]\n\nIt will show to wich base you want to change the \"number\""
     bot.reply_to(m, help_message)
 
 
-@bot.messages_handler(commands=['update'])
+@bot.message_handler(commands=['update'])
 def update(m):
     if isAdmin_fromPrivate(m):
         bot.reply_to(m, "Updating..\n\nTry /help in a few seconds.")
@@ -73,7 +73,7 @@ def update(m):
         bot.reply_to(m, "Sorry.. You're not an admin :/")
 
 
-@bot.messages_handler(commands=['start'])
+@bot.message_handler(commands=['start'])
 def start(m):
     help_message = "Hi! This is the inline  version of @theConvertor_bot\nSource code here:\n\nhttps://github.com/Ironjanowar/TheConvertorBot"
     bot.reply_to(m, help_message)
