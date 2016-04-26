@@ -14,7 +14,7 @@ with open('./convertor.token', 'r') as TOKEN:
     bot = telebot.TeleBot(TOKEN.readline().strip())
 
 
-if not path.isfile('./data/admin.json'):
+if not path.isfile('./data/admins.json'):
     with open('./data/admins.json', 'w') as adminData:
         adminData.write('{}')
         adminData.close
